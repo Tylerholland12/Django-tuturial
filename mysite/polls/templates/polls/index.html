@@ -1,11 +1,18 @@
 {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}"> -->
+<link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
 
+<center><h1>Take my polls!</h1></center>
 {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
+
+    <div class="card">
+        <div class="card-header">
+        
         <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    </div>
     {% endfor %}
     </ul>
 {% else %}

@@ -1,12 +1,21 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
-from django.views import generic
+from django.views import generic, View
 from django.utils import timezone
+from datetime import datetime
 
 from .models import Choice, Question
 
 # Create your views here.
+
+
+class ShowTimeView(View):
+    def get(self, request):
+        now = datetime.now
+        html = "<html><body>It is now {}</body></html>".format(now)
+        return HttpResponse(html)
+
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
